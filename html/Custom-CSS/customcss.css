@@ -1,0 +1,74 @@
+body{
+  background-image: url('../photo/background.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.container{
+  margin-top: 1.2rem;
+}
+/* header text */
+h1{
+  color:yellowgreen;
+  font-family: cursive;
+  font-size: xx-large;
+}
+h4{
+  color:burlywood;
+  font-family: cursive;
+  font-size: large;
+  text-align: center;
+}
+.image-box{
+  height: 15rem;
+}
+.car-image-show{
+  width: inherit;
+  height:inherit;
+}
+/* label */
+.form-label{
+  color: antiquewhite;
+  font-size: larger;
+}
+/* upload image */
+/* .upload{
+  background-color: transparent;
+  border: 0px;
+  color: darkseagreen;
+} */
+.input-box{
+  margin: auto 0px;
+  text-align: center;
+}
+.plate-number{
+  width: 60%;
+  margin: 0 auto;
+}
+/* box */
+.box{
+  width: 100%;
+}
+.inner-box{
+  height: 18rem;
+}
+/* table css */
+.container-fluid{
+  width: 95%;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.table{
+  background-color: aliceblue;
+  text-align: center;
+}
+.thead{
+  background-color: gainsboro;
+}
+h3{
+  color: antiquewhite;
+}
+.output-area{
+  color: antiquewhite;
+}

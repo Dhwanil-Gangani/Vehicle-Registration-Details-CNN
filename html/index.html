@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Fetch Car Details Using Number Plate</title>
+
+   <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"></link>
+   <link href="Custom-CSS/customcss.css" rel="stylesheet" type="text/css"></link>
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="row justify-content-center pb-2">WebApp to Fetch Car Details Using Number Plate</h1>
+        <h4><i>"Here Just Upload your Vehicle Resgistration Number, After that click on Show Information to display Vehicle Resgistration Details."</i></h4>
+        <!-- row box 1 -->
+        <div class="row box mt-4">
+            <div class="col-5 inner-box">
+                <div class="input-box">
+                    <Label class="form-label">Car Resgistration Details</Label>
+                   <!--  <input class="form-control form-control-sm upload" type="file" name="upload" id="upload" onchange="displayImage()" multiple> -->
+                    <input type="text" id="plate_number" class="form-control plate-number" name="plate_number" placeholder="Enter Plate Number of Vehicle">
+                    <!-- <input type="hidden" id="plate_number" name="plate_number" value=""> -->
+                    <button type="button" class="btn btn-success btn-md mt-3" onclick="showDetail()">Display Info</button>
+                </div>
+            </div>
+            <div class="col-7 inner-box">
+                <div class="image-box">
+                    <img src="photo/car-image1.jpg" class="rounded float-end car-image-show" alt="Car Image">
+                </div>
+            </div>
+           <!--  <div class="col-4 inner-box">
+                <img src="" class="rounded float-end car-image-show" name="car_image" alt="Upload Car Image">
+            </div> -->
+        </div>
+    </div>
+    <div class="container-fluid">
+         <!-- row box 2 -->
+         <div class="row box justify-content-center">
+          <pre>
+            <h3>Vehicle Registration Details:</h3>
+            <div id="output_area" class="output-area">
+           No data is there right know!</div>
+          </pre>
+ 
+            <!-- <table class="table table-hover">
+                <thead class="thead">
+                  <tr>
+                    <th scope="col">Parameter</th>
+                    <th scope="col">Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Owner Information</th>
+                    <td id="owner">{{owner info}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Model</th>
+                    <td id="model">{{model}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Company Name</th>
+                    <td id="cname">{{company name}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Registration Year</th>
+                    <td id="ryear">{{registration year}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Insurance Date</th>
+                    <td id="idate">{{insurance date}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Engine Number</th>
+                    <td id="enumber">{{engine number}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Fuel Type</th>
+                    <td id="ftype">{{fuel type}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Vehicle Identification Number</th>
+                    <td id="vinumber">{{vehicle identification number}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Registration Date</th>
+                    <td id="rdate">{{registration date}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Vehicle Fitness Till Date</th>
+                    <td id="fitness">{{vehicle fitness till date}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Vehicle Registration Location</th>
+                    <td id="vrlocation">{{vehicle registration location}}</td>
+                  </tr>
+                </tbody>
+              </table> -->
+        </div>
+    </div>
+<script>
+   /*  function displayImage() {
+        var uploaded_image = document.getElementById("upload").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", `http://<ip>/cgi-bin/Plate_Number_Detection.py?plate_image=${uploaded_image}`, false);
+        xhr.send();
+        // output from above url
+        xhr.onload = function() {
+        var output = xhr.responseText;
+        document.getElementById("plate_number").innerHTML = output;
+        var change_image = document.getElementById("car_image");
+        change_image.src = "photo/"+uploaded_image;
+        }
+    } */
+
+    function showDetail(){
+        var p_number = document.getElementById("plate_number").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://192.168.0.102/cgi-bin/fetchData.py?plate_number="+p_number, true);
+        xhr.send();
+        // output from above url
+        xhr.onload = function() {
+        var output = xhr.responseText;
+        document.getElementById("output_area").innerHTML=output;
+       /*  document.getElementById("owner").textContent=output["Owner"];
+        document.getElementById("model").textContent=output["CarModel"]["CurrentTextValue"];
+        document.getElementById("cname").textContent=output["CarMake"]["CurrentTextValue"];
+        document.getElementById("ryear").textContent=output["RegistrationYear"];
+        document.getElementById("idate").textContent=output["Insurance"];
+        document.getElementById("enumber").textContent=output["EngineNumber"];
+        document.getElementById("ftype").textContent=output["FuelType"]["CurrentTextValue"];
+        document.getElementById("vinumber").textContent=output["VechileIdentificationNumber"];
+        document.getElementById("rdate").textContent=output["RegistrationDate"];
+        document.getElementById("fitness").textContent=output["Fitness"];
+        document.getElementById("vrlocation").textContent=output["Location"]; */
+        }
+    } 
+</script>
+</body>
+</html>
